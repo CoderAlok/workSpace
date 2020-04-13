@@ -372,3 +372,7 @@ $db_name = "job_portal_new";
 $tb_name = "apply";
 
 SELECT COUNT(*) AS noofcolumn FROM INFORMATION_SCHEMA.COLUMNS WHERE table_schema = $db_name AND table_name = $tb_name
+
+
+// Check the row with duplicate value before inserting 
+INSERT INTO tbl_sim_activation (sim_number, sim_connection_provider, sim_activation_date, sim_expire_date) SELECT '8617028943', 'Jio', '2020-10-01', '2030-10-15' FROM DUAL WHERE NOT EXISTS (SELECT tbl_id FROM tbl_sim_activation WHERE tbl_id = 1);
