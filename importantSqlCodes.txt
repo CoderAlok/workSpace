@@ -1,0 +1,374 @@
+<?php
+
+insert IGNORE into tbl_verify_email_captchs (code, source, captcha_code, email) values ('akjs58', 'advertisement', '4545', 'jeyakumar@mail.com');
+
+REPLACE into tbl_verify_email_captchs (code, source, captcha_code, email) values ('akjs58', 'advertisement', '4545', 'jeyakumar@mail.com');	
+
+
+to delete row with a range using id
+
+delete from tbl_verify_email_captchs where id between 3 AND 8;
+
+
+
+#this will check the data before inserting into table
+INSERT INTO sub_menus (code,main_menu_code,name,controller_name,created_by,updated_by) SELECT 'QPKTqY','QlMkC7','Sales Analysis','bd/sales_analysis',2518655582,2518655582 FROM DUAL WHERE NOT EXISTS (SELECT code FROM sub_menus WHERE code='QPKTqY');
+
+
+#working 
+INSERT INTO sub_menus(
+code, main_menu_code, name, controller_name, order_no, is_visible, created_by, updated_by
+) 
+VALUES (
+'6TMRv7', 'sj7Hl4', 'Users List', 'admin/user', '1', '0', '2530670298' ,'4166863209'
+);
+
+
+INSERT INTO sub_menus (code, main_menu_code, name, controller_name, order_no, is_visible, created_by, updated_by) 
+SELECT '6TMRv7', 'sj7Hl4', 'Users List', 'admin/user', '1', '0', '2530670298', '4166863209' FROM DUAL WHERE NOT EXISTS (SELECT code FROM sub_menus WHERE code="6TMRv7");
+
+
+
+#creating a table after check a duplicate table. 
+CREATE TABLE IF NOT EXISTS sub_menus (
+	id int(11) PRIMARY KEY AUTO_INCREMENT,
+	code varchar(45) ,
+	main_menu_code varchar(45) ,
+	name text ,
+	controller_name text,
+	order_no int(11) ,
+	is_visible tinyint(1),
+	created_by int(10) unsigned,
+	updated_by int(10) unsigned,
+	created_on datetime DEFAULT CURRENT_TIMESTAMP,
+	updated_on datetime DEFAULT CURRENT_TIMESTAMP,
+	is_deleted tinyint(1)
+)ENGINE = InnoDB;
+
+
+
+Telephone Code Table  
+===================== 
+Country 
+Country_tel_code 
+State/Province 
+Currency_symbol($) 
+Currency_name(rs) 
+Denomination(paisa) 
+Denominated_name(INR) 
+Number_format(99,99,999.30)
+
+
+currency
+========================
+
+CREATE TABLE IF NOT EXISTS currency (
+	id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	currency_code VARCHAR(20) NOT NULL,
+	country VARCHAR(255) NOT NULL DEFAULT 'India',
+	currency_name VARCHAR(255) NOT NULL DEFAULT 'Rupee',
+	currency_symbol VARCHAR(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '₹',
+	denomination VARCHAR(50) NOT NULL DEFAULT 'paise',
+	denominated_name VARCHAR(20) NOT NULL DEFAULT 'INR',
+	number_format VARCHAR(30) NOT NULL DEFAULT '0.0'
+);
+
+ALTER TABLE currency MODIFY COLUMN (
+	currency_code VARCHAR(10) NOT NULL SELECT CONCAT (substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand()*36+1, 1),substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand()*36+1, 1),substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand()*36+1, 1),substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand()*36+1, 1),substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand()*36+1, 1),substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand()*36+1, 1));
+);
+
+
+# This code is to rename the table. 
+ALTER TABLE Country_tel_code RENAME TO country_tele; 
+
+
+
+# Generating a unique code in the SQL. This query is Generating 8digit unique code. 
+SELECT CONCAT (
+	substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand()*36+1, 1),
+	substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand()*36+1, 1),
+	substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand()*36+1, 1),
+	substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand()*36+1, 1),
+	substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand()*36+1, 1),
+	substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand()*36+1, 1),
+	substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand()*36+1, 1),
+	substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', rand()*36+1, 1)
+) as unique_number;
+
+
+ALTER TABLE country_name 
+ADD COLUMN country_tel_code VARCHAR(6) NOT NULL,
+ADD COLUMN currency_name VARCHAR(50) NOT NULL,
+ADD COLUMN currency_symbol VARCHAR(6) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+ADD COLUMN denomination VARCHAR(50) NOT NULL,
+ADD COLUMN denominated_name VARCHAR(20) NOT NULL,
+ADD COLUMN number_format VARCHAR(50) NOT NULL,
+ADD COLUMN rate DOUBLE(16,2) NOT NULL;
+
+CREATE TABLE IF NOT EXISTS country(
+	id INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(255) NOT NULL
+)
+
+
+
+CREATE TABLE tbl_verify_email_captchs ( id INT NOT NULL AUTO_INCREMENT , code VARCHAR(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , source TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , captcha_code VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , email VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , created_by INT(10) UNSIGNED NOT NULL , updated_by INT(10) UNSIGNED NOT NULL , created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , is_deleted TINYINT(1) NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB;
+
+
+
+
+
+
+
+
+########################################################
+ // File functions and the code 
+
+    // It shows the current directory
+    // echo __DIR__;
+
+    // This is create a Directory in php in the same folder.
+    // To craete a directory in different directory need to give the directory path with the directory name.
+
+    // $folder_name = "test_p1";
+    // if( !mkdir($folder_name, 0777, true) ){
+    //   echo "Folder not created.";
+    // }else{
+    //   echo "Folder Created Successfully.";
+    // }
+
+
+
+    // This code is to delete a directory in the direcctory.
+
+    // if(is_dir($folder_name)){
+    //   if (rmdir($folder_name)) {
+    //     echo "Directory deleted Successfully.";
+    //   }
+    //   else{
+    //     echo "Directory not deleted.";
+    //   }
+    // }
+    // else{
+    //   echo "Directory not there";
+    // }
+
+
+    //This code will create a file and add the content in that file .
+
+    // $file = "test.txt";
+    // $content = "This will again deleted all the unwanted part of the file.";
+    // if(!is_file($file)){
+    //   file_put_contents($file, $content);
+    // }
+    // else if(is_file($file)){
+    //   file_put_contents($file, $content);
+    // }
+
+    // $txt = file_get_contents($file);
+    // echo $txt;
+
+
+    // Some codeigniter function 
+    
+    // This function calls the native codeignter libarary functions 
+    // $CI =& get_instance();
+
+
+    // In this manner we use the function while we extend the CI_Controller
+    // $this->load->library('Library Name', $config);
+
+
+    // But here we dont need anything we are calling the super methods 
+    // $CI->load->library('Library Name', $config);
+
+
+
+
+    #Commonds to get the IP address full details in Linux :
+
+    #~> sudo apt-get install curl jq
+
+    #~> curl https://ipinfo.io/ip
+
+    #~> curl https://ipinfo.io/ip
+
+
+    #This is the result :
+    {
+        "status": "success",
+        "data": {
+            "ipv4": "106.201.126.140",
+            "continent_name": "Asia",
+            "country_name": "India",
+            "subdivision_1_name": "Karnataka",
+            "subdivision_2_name": null,
+            "city_name": null,
+            "latitude": "12.98330",
+            "longitude": "77.58330"
+        }
+    }
+
+
+
+#Creating a new user in mysql in TREMINAL
+1). CREATE USER 'alok_1'@'localhost' IDENTIFIED BY 'alok@12345';
+2). GRANT ALL PRIVILEGES ON *.* TO 'alok_1'@'localhost';
+3). FLUSH PRIVILEGES;
+
+
+
+# This code will return the string and trim every spaces.
+SELECT REPLACE(name, " ", "") AS NAME FROM user WHERE name LIKE 'm n%';
+
+
+#Conacting a string in mysql 
+SELECT * FROM user WHERE name LIKE CONCAT("m n", "%");
+
+
+SELECT REGEXP_REPLACE('mn','[A-Zf]','-',1,0,'c'); 
+
+
+#To declear a variable in Mysql 
+SET @str = 'It was good';
+SET @str = 'M N Service Providers';
+SET @str = 'MN';
+
+#To check the variable 
+SELECT @str;
+SELECT @str AS STRING;
+
+
+SELECT LOWER(@str);
+SELECT LCASE(@str);
+SELECT UPPER(@str);
+SELECT UCASE(@str);
+
+SELECT BIN(2);   10
+SELECT BIN(3);   11
+SELECT BIN(4);   100
+
+SELECT ASCII('A');  65
+SELECT ASCII('a');  97
+SELECT ASCII('1');  49
+
+SELECT BIT_LENGTH('A');     8
+SELECT BIT_LENGTH('AL');    16
+SELECT BIT_LENGTH('ALO');   24
+SELECT BIT_LENGTH('ALOK');  32
+
+
+// in php
+$this->name      reffers to the current object.
+self::$name      reffers to the current class.
+
+
+
+$this->{$col};
+
+
+// Query related to date
+--------------------------------------
+
+To show result till yesterday
+
+WHERE DATE(date_time) < CURDATE()
+
+To show results of 10 days
+
+WHERE date_time < NOW() - INTERVAL 10 DAY
+
+To show results before 10 days
+
+WHERE DATE(date_time) < DATE(NOW() - INTERVAL 10 DAY)
+
+These will work for you
+
+You can find dates like this
+
+SELECT DATE(NOW() - INTERVAL 11 DAY)
+
+
+
+// Date representation in PHP
+
+    $date1 = date( 'H:i:s', strtotime('13-Jan-2016 05:45:21') );
+    $date2 = date( 'H:i:s', strtotime('13-Jan-2016 06:45:21') );
+
+    $f = new DateTime($date1);
+    echo $f->format('H')."<br/>";
+    echo $f->format('i')."<br/>";
+    echo $f->format('s')."<br/>";
+    echo $f->format('d')."<br/>";
+    echo $f->format('m')."<br/>";
+    echo $f->format('Y')."<br/>";
+    echo $f->format('D')."<br/>";
+    echo $f->format('M')."<br/>";
+    echo $f->format('y')."<br/>";
+
+    echo "<br/><br/><br/><br/>";
+    
+    $t = new DateTime($date2);
+    echo $t->format('H')."<br/>";
+    echo $t->format('i')."<br/>";
+    echo $t->format('s')."<br/>";
+    echo $t->format('d')."<br/>";
+    echo $t->format('m')."<br/>";
+    echo $t->format('Y')."<br/>";
+    echo $t->format('D')."<br/>";
+    echo $t->format('M')."<br/>";
+    echo $t->format('y')."<br/>";
+
+    echo "<br/><br/><br/><br/>";
+
+// Getting the difference between two dates.
+    echo "Hour Diff : ".$f->diff($t)->format('%i');
+    echo "Hour Diff : ".$f->diff($t)->format('%h hr %i min');
+
+
+
+//------------------- Tricks : Date Calculation --------------------
+//current date 
+echo "Today : ".$to=date('Y-m-d H:i:s a')."<br/><br/>";
+
+// echo $from=date('Y-m-d',strtotime(" -1 months"));
+echo 'Before 1 Day : '.$from=date('Y-m-d',strtotime(" -1 day"))."<br/>";
+echo 'Before 1 Week : '.$from=date('Y-m-d',strtotime(" -1 week"))."<br/>";
+echo 'Before 1 Month : '.$from=date('Y-m-d',strtotime(" -1 month"))."<br/>";
+echo 'Before 1 Year : '.$from=date('Y-m-d',strtotime(" -1 year"))."<br/>";
+
+echo 'Before 1 hour : '.$from=date('H:i:s',strtotime(" -1 hour"))."<br/>";
+echo 'Before 1 minute : '.$from=date('H:i:s',strtotime(" -1 minute"))."<br/>";
+echo 'Before 1 second : '.$from=date('H:i:s',strtotime(" -1 second"))."<br/>";
+
+
+
+// Must unset the params after all uses of that variable coz that reduces the use of unwanted memory.
+unset($dummy_params);
+
+
+//Variable initialization
+$dummy_params['keys'] = $dummy_params['incolumn'] = $params['search'][0]['incolumn'] ;
+
+
+// Use array/object as an arguments To minimize the argument part in a function
+
+$params = ['column'=>'name', 'key'=>'Alok', 'starting_record'=>'1', 'no_of_record'=>'5'];
+
+function get($params){
+
+//Apply logics
+    if($params['key'] == 'Alok'){
+        //code
+    }
+    else if($params['name'] == 'first_name'){
+        //code
+    }
+}
+
+
+
+$db_name = "job_portal_new";
+$tb_name = "apply";
+
+SELECT COUNT(*) AS noofcolumn FROM INFORMATION_SCHEMA.COLUMNS WHERE table_schema = $db_name AND table_name = $tb_name
