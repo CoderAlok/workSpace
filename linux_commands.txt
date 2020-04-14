@@ -91,6 +91,11 @@ $ git config --global user.name "coderAlok"
 
 # shell script must have .sh extension
 
+# Environment variable accessed in Command line
+$ TEST="Unix Programming"
+$ echo $TEST
+
+
 # To know the process id of current shell
 $ echo $$
 
