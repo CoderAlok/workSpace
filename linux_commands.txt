@@ -1,0 +1,128 @@
+# This command shows the SHELL we are using in LINUX or unix.
+$ echo $0;
+bash
+$ ps -p $$;
+PID TTY          TIME CMD
+3286 pts/0    00:00:00 bash
+
+
+############################
+
+# pwd shows the current directory
+$ pwd
+/home/alok/Desktop
+
+
+
+# To come into home directory i.e: coming out of all users 
+$ cd ~
+
+# To get into that perticular users home directory.
+$ cd ~alok
+
+# To reach the previous home directory.
+$ cd -
+
+
+
+# To make a directory 
+$ mkdir directory1			# makes one directory
+$ mkdir -p directory1/directory2/directory3/test.txt   #  Create the directory with the given path and file also.
+
+
+# To change the directory 
+$ chdir directory1
+$ chdir directory1/directory2/directory3
+
+
+# To remove a directory 
+$ rmdir directory1
+
+
+# To remove the directory with all the directory and files underneath it
+$ rm -r directory1
+
+
+# To view the text in the file 
+$ cat test.txt
+
+# To delete a file 
+$ rm test.txt
+
+# ls lists out the directory 
+$ ls 
+$ ls -l
+$ ls -a      # Lists all file with the hidden file 
+$ ls -s
+$ ls -i
+
+# To create a hidden file in linux or Unix add '.' in front of file name. ex: .alok_config
+$ touch .alok_config
+
+# To know more use this command 
+$ ls --help
+
+# To use meta / wild card
+$ ls *.txt				  # this command will return all the file related to this exts.	
+$ ls *.txt, *.jpg, *.png  # this command will return all the file related to this exts.
+
+
+
+
+
+
+
+
+
+
+#############################
+
+# shell script must have .sh extension
+
+# To know the process id of current shell
+$ echo $$
+
+
+
+
+
+# to execute the shell script 
+$ ./test.sh
+# test.sh is the shell file name.
+
+# To write a program in shell 
+$ nano test.sh
+	echo "What is your name?"
+	read PERSON
+	echo "Please mention your sex?"
+	read GENDER
+	echo "Where do you live?"
+	read PLACE
+
+	echo "Hello, myself "PERSON" from "PLACE". And i am "GENDER
+
+#  Command line argument example
+$ nano test.sh
+	echo "File Name : $0"
+	echo "First Parameter : $1"
+	echo "Secound Parameter : $2"
+	echo "Third Parameter : $3"
+	echo "Fourth Parameter : $4"
+	echo "Fifth Parameter : $5"
+	echo "Sixth Parameter : $6"
+	echo "Seventh Parameter : $7"
+	echo "Eighth Parameter : $8"
+	echo "Ninth Parameter : $9"
+	echo "Tenth Parameter : $10"
+
+	echo "Quoted Values : $@"
+	echo "Quoted Values : $*"
+	echo "Total number of Parameter : $#"
+
+# To pass the parameters in command line
+$ /test.sh 10 20 'Hello World' 30 40 50 60 70 80 90 11 21
+
+
+
+
+
