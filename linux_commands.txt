@@ -70,9 +70,21 @@ $ ls *.txt, *.jpg, *.png  # this command will return all the file related to thi
 
 
 
+###################### GIT STARTED #######################
+$ git clone 'https:/github/coderAlok/.......'
+$ cd <that folder>
+$ git status
+$ git add <files.ext>
+$ git commit -m 'Any changes that has been made under this commans'
+$ git push
 
 
+# If user id and password is not there
+$ git config --global user.email "alokdas4all@gmail.com"
+$ git config --global user.name "coderAlok"
 
+# Then username and password will be asked. Provide both of the to continue.
+####################### GIT ENDED #######################
 
 
 #############################
