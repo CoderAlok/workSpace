@@ -1,5 +1,25 @@
 <?php
 
+
+What is BLOB
+A BLOB (large binary object) is a MySQL data type that can be used to store binary data. We can convert our files and images into binary data in Python and store them in MySQL table using BLOB.
+
+
+CREATE TABLE files (
+    id   INT(11)       AUTO_INCREMENT PRIMARY KEY,
+    mime VARCHAR (255) NOT NULL,
+    data BLOB          NOT NULL
+);
+
+
+
+
+SELECT CONVERT(package_expect USING utf8) FROM tbl_package WHERE package_id = 3
+
+Here CONVERT() is used to convert the BLOB file into text file in mysql.
+
+
+
 insert IGNORE into tbl_verify_email_captchs (code, source, captcha_code, email) values ('akjs58', 'advertisement', '4545', 'jeyakumar@mail.com');
 
 REPLACE into tbl_verify_email_captchs (code, source, captcha_code, email) values ('akjs58', 'advertisement', '4545', 'jeyakumar@mail.com');	
